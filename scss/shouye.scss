@@ -1,0 +1,126 @@
+@charset "utf-8";
+body,div,p,ul,ol,li,dl,dt,dd,table,tr,td,form,h1,h2,h3,h4,h5,h6,hr,fieldset,input,img{
+	margin:0;
+	padding:0;
+	outline: none;
+	list-style: none;
+}
+a{
+	display: block;
+	text-decoration: none;
+}
+a:hover{
+	cursor: pointer;
+}
+img{
+	display: block;
+	border:0;
+}
+form{
+    fieldset{
+        border: 1px solid #2889cd;
+        margin: 0 3px;
+        legend{
+            text-align: center;
+            font-size: 20px;
+            color: #333;
+        }
+        .boxDiv{
+            margin: 20px 10px 0;
+            overflow: hidden;
+            border-top: 1px solid #e2e2e2;
+            .ulBox{
+                width: 80.5%;
+                overflow: hidden;
+                margin: 2.3% auto 0;
+                .btnBox{
+                    width: 15.5%;
+                    height: 80px;												
+                    position: relative;
+                    float: left;
+                    margin: 2.2% 2.2%;
+                    button{
+                        width: 100%;
+                        height: 80px;
+                        background: #333333;
+                        color: #fff;
+                        font-size: 15px;
+                        text-align: center;
+                        font-weight: 600;
+                        float: left;
+                        border: 0;
+                        outline: none;
+                    }
+                    .bor_top{
+                        width: 15px;
+                        height: 15px;
+                        position: absolute;
+                        border-top: 3px solid #1aa094;
+                        border-left: 3px solid #1aa094;
+                    }
+                    .bor_bot{
+                        width: 15px;
+                        height: 15px;
+                        position: absolute;
+                        border-bottom: 3px solid #1aa094;
+                        border-right: 3px solid #1aa094;
+                        right: 0;
+                        bottom: 0;
+                    }
+                }
+            }
+            .borDiv{
+                overflow: hidden;
+                i{
+                    width: 45%;
+                    display: block;
+                    height: 24px;
+                    border-top: 1px solid #e2e2e2;
+                    float: left;
+                    margin-top: 24px;
+                }
+                p{
+                    width: 10%;
+                    float: left;
+                    line-height: 48px;
+                    text-align: center;
+                    font-size: 20px;
+                    color: #333;
+                }
+            }
+            .boxDiv_p{
+                font-size: 14px;
+                margin-left: 30px;
+                color: #333;
+                margin-bottom: 48px;
+            }
+        }		
+    }
+}  
+
+@media screen and (min-width:740px) and  (max-width:960px){
+	form fieldset {
+        width: 82.4%;
+    }
+    form fieldset .boxDiv .ulBox .btnBox {
+        width: 13.5%;
+    }
+    form fieldset .boxDiv .borDiv i {
+        width: 42%;
+    }
+    form fieldset .boxDiv .borDiv p {
+        width: 16%;
+    }
+}
+@media screen and (max-width:740px){
+	.ulBox{
+        width: 81.5%;
+    }
+    form fieldset .boxDiv .borDiv i {
+        width: 44%;
+    }
+    form fieldset .boxDiv .borDiv p {
+        width: 12%;
+    }
+}
+

@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" type="text/css" href="css/dangan.css" >
+<link rel="stylesheet" href="css/simplePaging.css">
+</head>
+<body>
+<div class="divBig">
+    <div class="div01">
+        <ul>
+            <li>用户档案</li>
+            <li>角色管理</li>
+            <li>预警管理<img src="img/xiajian01.png" alt=""></li>
+            <li>用户添加</li>
+        </ul>
+    </div>
+    <form action="">
+        <fieldset>
+            <legend>档案管理</legend>
+            <input type="text" value="搜索">
+        </fieldset>
+    </form>
+    <div class="t">
+        <table cellspacing="0" cellpadding="0" border="0">
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>职业</th>
+                <th>所属</th>
+                <th>注册时间</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td>蔡鹏</td>
+                <td>男</td>
+                <td>医生</td>
+                <td>私人</td>
+                <td>2016-09-18</td>
+                <td><input type="button" value="修改"><input class="delete" type="button" value="删除"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>张庭</td>
+                <td>男</td>
+                <td>会计</td>
+                <td>公司</td>
+                <td>2017-06-21</td>
+                <td><input type="button" value="修改"><input class="delete" type="button" value="删除"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>李琳</td>
+                <td>女</td>
+                <td>软件设计</td>
+                <td>公司</td>
+                <td>2015-10-08</td>
+                <td><input type="button" value="修改"><input class="delete" type="button" value="删除"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>宋磊</td>
+                <td>男</td>
+                <td>JAVA工程师</td>
+                <td>公司</td>
+                <td>2015-07-13</td>
+                <td><input type="button" value="修改"><input class="delete" type="button" value="删除"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>王霞</td>
+                <td>女</td>
+                <td>UI设计</td>
+                <td>公司</td>
+                <td>2016-12-10</td>
+                <td><input type="button" value="修改"><input class="delete" type="button" value="删除"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>赵楠</td>
+                <td>女</td>
+                <td>企业家</td>
+                <td>公司</td>
+                <td>2014-10-08</td>
+                <td><input type="button" value="修改"><input class="delete" type="button" value="删除"></td>
+            </tr>
+        </table>                        
+        <!-- 分页 -->
+        <div class="part">
+            <div class="simplePaging4"></div>
+        </div>
+    </div>
+    <div class="div02">
+        <ul>
+            <li>查询</li>
+            <li>编辑</li>
+            <li>打印</li>
+            <li>导出</li>
+            <li class="tianjia">添加</li>
+            <li>权限</li>
+        </ul>
+    </div>
+</div>
+
+<div class="showDiv">
+    <div class="show01">
+        <h3>档案管理</h3>
+        <a><p>姓名：</p><input id="name" type="text" value=""></a>
+        <a><p>性别：</p><input id="sex" type="text" value=""></a>
+        <a><p>职业：</p><input id="work" type="text" value=""></a>
+        <a><p>所属：</p><input id="from" type="text" value=""></a>
+        <a><p>注册时间：</p><input id="loginTime" type="text" value=""></a>
+        <a class="inp"><input id="btn_cancle" type="button" value="取消"><input id="btn_save" type="button" value="保存"></a>
+    </div>
+</div>
+
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script src="js/simplePaging.js"></script>
+<script type="text/javascript">
+
+$(function(){
+    $(".div02 li").click(function(){
+        // $(this).toggle();
+        var liindex = $('.div02 li').index(this);
+		$(this).addClass('focus').siblings("li").removeClass('focus');
+		$('.beside_right div.product').eq(liindex).fadeIn(150).siblings('div.product').hide();
+    });
+});
+
+// 导航划过
+$(function(){
+    $(".div01 ul li").mouseenter(function(){
+        $(this).addClass("on");
+    });
+    $(".div01 ul li").mouseleave(function(){
+        $(this).removeClass("on");
+    })
+});
+
+//表格隔行变色
+$(function(){
+    var tDom=document.getElementsByClassName('t')[0];
+    var trDom=tDom.children[0].children[0].children;
+	getColor(trDom);
+	changeColor(trDom);
+});
+
+function getColor(trDom){	
+	for(var i=0;i<trDom.length;i++){
+		if(i%2==0){
+			trDom[i].style.backgroundColor="#f6f6f6";
+		}else{
+			trDom[i].style.backgroundColor="#fff";
+		}
+	}
+}
+
+function changeColor(trDom){
+	for(var i=1;i<trDom.length;i++){
+		if(trDom[i].style.backgroundColor=="rgb(255, 255, 255)"){
+			trDom[i].onmouseover=function(){		
+				this.style.backgroundColor="rgb(246, 246, 246)";
+			}
+			trDom[i].onmouseout=function(){		
+				this.style.backgroundColor="rgb(255, 255, 255)";
+			}
+		}
+	}
+}
+
+// 分页
+$(".simplePaging4").simplePaging({
+    allPage: 25,//总页数
+    showPage: 5,//显示页数
+    animateType: "jumpy",//过渡模式：动画“animation”、跳动“jumpy”、快速移动“fast”、正常速度移动“normal”、缓慢的速度移动“slow”、异常缓慢的速度移动“verySlow”
+    animationTime: 300,//animateType为animation时，动画过渡时间(ms)
+    callBack: function (num) {
+        $(".simplePaging4PageNum").text(num)
+    }
+});
+
+
+// 添加
+$(".tianjia").click(function(){
+    $(".showDiv").show();
+})
+$("#btn_cancle").click(function(){
+    $(".showDiv").hide();
+})
+$("#btn_save").click(function(){
+    var a="";
+    var a1=$("#name").val();
+    var a2=$("#sex").val();
+    var a3=$("#work").val();
+    var a4=$("#from").val();
+    var a5=$("#loginTime").val();
+    $("table tbody").append('<tr><td>'+a+'</td><td>'+a1+'</td><td>'+a2+'</td><td>'+a3+'</td><td>'+a4+'</td><td>'+a5+'</td><td><input type="button" value="修改"><input class="delete" type="button" value="删除"></td></tr>');   
+    var tDom=document.getElementsByClassName('t')[0];
+    var trDom=tDom.children[0].children[0].children;
+	getColor(trDom);
+	changeColor(trDom);
+    remove(); 
+    $("#name,#sex,#work,#from,#loginTime,#done").val("");
+    $(".showDiv").hide();
+})
+
+//删除
+function remove(){
+	var removeDom=document.getElementsByClassName("delete");
+	var trDom=document.getElementsByClassName("trs");
+	for(var i=0;i<removeDom.length;i++){
+		removeDom[i].onclick=function(){
+			let delelteCon = confirm("确认删除吗？");
+			if (delelteCon) {
+				document.getElementsByTagName("table")[0].children[0].removeChild(this.parentNode.parentNode);
+                var tDom=document.getElementsByClassName('t')[0];
+                var trDom=tDom.children[0].children[0].children;
+                getColor(trDom);
+                changeColor(trDom);
+			}
+		}		
+	}		
+}	
+$(function(){
+    remove(); 
+})	
+
+</script>

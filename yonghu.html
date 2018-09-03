@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/yonghu.css" >
+    <link rel="stylesheet" href="css/simplePaging.css">
+</head>
+<body>
+<div class="yonghu_01">
+    <div class="divBig">
+        <form action="">
+            <fieldset>
+                <legend>用户档案</legend>
+                <input type="text" value="搜索">
+            </fieldset>
+        </form>
+        <div class="t">
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                    <th>用户名</th>
+                    <th>性别</th>
+                    <th>身份证</th>
+                    <th>住址</th>
+                    <th>电话</th>
+                    <th>家庭人口</th>
+                    <th>劳动人口</th>
+                    <th>操作</th>
+                </tr>
+                <tr class="trs">
+                    <td>蔡鹏</td>
+                    <td>男</td>
+                    <td>610521198909217921</td>
+                    <td>陕西省西安市高新区</td>
+                    <td>18791260371</td>
+                    <td>4</td>
+                    <td>2</td>
+                    <td><input type="button" value="修改"><input class="delete" type="button" value="删除"></td>
+                </tr>
+                <tr class="trs">
+                    <td>张庭</td>
+                    <td>男</td>
+                    <td>610521198909217921</td>
+                    <td>陕西省西安市高新区</td>
+                    <td>18791260371</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td><input type="button" value="修改"><input class="delete" type="button" value="删除"></td>
+                </tr>
+                <tr class="trs">
+                    <td>李琳</td>
+                    <td>女</td>
+                    <td>610521198909217921</td>
+                    <td>陕西省西安市高新区</td>
+                    <td>18791260371</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td><input type="button" value="修改"><input class="delete" type="button" value="删除"></td>
+                </tr>
+                <tr class="trs">
+                    <td>宋磊</td>
+                    <td>男</td>
+                    <td>610521198909217921</td>
+                    <td>陕西省西安市高新区</td>
+                    <td>18791260371</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td><input type="button" value="修改"><input class="delete" type="button" value="删除"></td>
+                </tr>
+                <tr class="trs">
+                    <td>王霞</td>
+                    <td>女</td>
+                    <td>610521198909217921</td>
+                    <td>陕西省西安市高新区</td>
+                    <td>18791260371</td>
+                    <td>4</td>
+                    <td>2</td>
+                    <td><input type="button" value="修改"><input class="delete" type="button" value="删除"></td>
+                </tr>
+                <tr class="trs">
+                    <td>赵楠</td>
+                    <td>女</td>
+                    <td>610521198909217921</td>
+                    <td>陕西省西安市高新区</td>
+                    <td>18791260371</td>
+                    <td>4</td>
+                    <td>3</td>
+                    <td><input type="button" value="修改"><input class="delete" type="button" value="删除"></td>
+                </tr>
+            </table>                        
+            <!-- 分页 -->
+            <div class="part">
+                <div class="simplePaging4"></div>
+            </div>
+        </div>
+        <div class="div02">
+            <ul>
+                <li>导出</li>
+                <li>打印</li>
+                <li class="tianjia">添加</li>
+            </ul>
+        </div>
+        <div class="div03">
+
+        </div>
+    </div>
+</div>
+<div class="showDiv">
+        <div class="show01">
+            <h3>用户档案</h3>
+            <a><p>用户名：</p><input id="name" type="text" value=""></a>
+            <a><p>性别：</p><input id="sex" type="text" value=""></a>
+            <a><p>身份证：</p><input id="card" type="text" value=""></a>
+            <a><p>住址：</p><input id="address" type="text" value=""></a>
+            <a><p>电话：</p><input id="phone" type="text" value=""></a>
+            <a><p>家庭人口：</p><input id="fam_person" type="text" value=""></a>
+            <a><p>劳动人口：</p><input id="wor_person" type="text" value=""></a>
+            <a class="inp"><input id="btn_cancle" type="button" value="取消"><input id="btn_save" type="button" value="保存"></a>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script src="js/simplePaging.js"></script>
+<script type="text/javascript">
+
+//表格隔行变色
+$(function(){
+    var tDom=document.getElementsByClassName('t')[0];
+    var trDom=tDom.children[0].children[0].children;
+	getColor(trDom);
+	changeColor(trDom);
+});
+
+function getColor(trDom){	
+	for(var i=0;i<trDom.length;i++){
+		if(i%2==0){
+			trDom[i].style.backgroundColor="#f6f6f6";
+		}else{
+			trDom[i].style.backgroundColor="#fff";
+		}
+	}
+}
+
+function changeColor(trDom){
+	for(var i=1;i<trDom.length;i++){
+		if(trDom[i].style.backgroundColor=="rgb(255, 255, 255)"){
+			trDom[i].onmouseover=function(){		
+				this.style.backgroundColor="rgb(246, 246, 246)";
+			}
+			trDom[i].onmouseout=function(){		
+				this.style.backgroundColor="rgb(255, 255, 255)";
+			}
+		}
+	}
+}
+
+// 分页
+$(".simplePaging4").simplePaging({
+    allPage: 25,//总页数
+    showPage: 5,//显示页数
+    animateType: "jumpy",//过渡模式：动画“animation”、跳动“jumpy”、快速移动“fast”、正常速度移动“normal”、缓慢的速度移动“slow”、异常缓慢的速度移动“verySlow”
+    animationTime: 300,//animateType为animation时，动画过渡时间(ms)
+    callBack: function (num) {
+        $(".simplePaging4PageNum").text(num)
+    }
+});
+
+// 添加
+$(".tianjia").click(function(){
+    $(".showDiv").show();
+})
+$("#btn_cancle").click(function(){
+    $(".showDiv").hide();
+})
+$("#btn_save").click(function(){
+    var a1=$("#name").val();
+    var a2=$("#sex").val();
+    var a3=$("#card").val();
+    var a4=$("#address").val();
+    var a5=$("#phone").val();
+    var a6=$("#fam_person").val();
+    var a7=$("#wor_person").val();
+    $("table tbody").append('<tr><td>'+a1+'</td><td>'+a2+'</td><td>'+a3+'</td><td>'+a4+'</td><td>'+a5+'</td><td>'+a6+'</td><td>'+a7+'</td><td><input type="button" value="修改"><input class="delete" type="button" value="删除"></td></tr>'); 
+    var tDom=document.getElementsByClassName('t')[0];
+    var trDom=tDom.children[0].children[0].children;
+	getColor(trDom);
+	changeColor(trDom);
+    remove();  
+    $("#name,#sex,#card,#address,#phone,#fam_person,#wor_person").val("");
+    $(".showDiv").hide();
+})
+
+//删除
+function remove(){
+	var removeDom=document.getElementsByClassName("delete");
+	var trDom=document.getElementsByClassName("trs");
+	for(var i=0;i<removeDom.length;i++){
+		removeDom[i].onclick=function(){
+			let delelteCon = confirm("确认删除吗？");
+			if (delelteCon) {
+				document.getElementsByTagName("table")[0].children[0].removeChild(this.parentNode.parentNode);
+                var tDom=document.getElementsByClassName('t')[0];
+                var trDom=tDom.children[0].children[0].children;
+                getColor(trDom);
+                changeColor(trDom);
+            }
+		}		
+	}		
+}	
+$(function(){
+    remove(); 
+})
+</script>

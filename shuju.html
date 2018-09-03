@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/shuju.css" >
+    <link rel="stylesheet" href="css/simplePaging.css">
+</head>
+<body>
+<div class="divBig">
+    <div class="div01">
+        <ul>
+            <li>数据档案</li>
+            <li>测试结果数据</li>
+            <li>测试数据统计</li>
+            <li>维基数据统计</li>
+            <li>导出数据记录</li>
+            <li>案例数据</li>
+        </ul>
+    </div>
+    <form action="">
+        <fieldset>
+            <legend>数据管理</legend>
+            <input type="text" value="搜索">
+        </fieldset>
+    </form>
+    <div class="t">
+        <table cellspacing="0" cellpadding="0" border="0">
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>用户名</th>
+                <th>性别</th>
+                <th>角色</th>
+                <th>所测量表</th>
+                <th>测试用时</th>
+                <th>测试时间</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td>蔡鹏</td>
+                <td>男</td>
+                <td>医生</td>
+                <td>表一</td>
+                <td>30分钟</td>
+                <td>2016-09-18</td>
+                <td>结果</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>张庭</td>
+                <td>男</td>
+                <td>会计</td>
+                <td>表二</td>
+                <td>30分钟</td>
+                <td>2017-06-21</td>
+                <td>结果</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>李琳</td>
+                <td>女</td>
+                <td>软件设计</td>
+                <td>表三</td>
+                <td>30分钟</td>
+                <td>2015-10-08</td>
+                <td>结果</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>宋磊</td>
+                <td>男</td>
+                <td>JAVA工程师</td>
+                <td>表四</td>
+                <td>30分钟</td>
+                <td>2015-07-13</td>
+                <td>结果</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>王霞</td>
+                <td>女</td>
+                <td>UI设计</td>
+                <td>表五</td>
+                <td>30分钟</td>
+                <td>2016-12-10</td>
+                <td>结果</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>赵楠</td>
+                <td>女</td>
+                <td>企业家</td>
+                <td>表六</td>
+                <td>30分钟</td>
+                <td>2014-10-08</td>
+                <td>结果</td>
+            </tr>
+        </table>                        
+        <!-- 分页 -->
+        <div class="part">
+            <div class="simplePaging4"></div>
+        </div>
+    </div>
+    <div class="div02">
+        <ul>
+            <li>查看</li>
+            <li>导出</li>
+            <li>打印</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script src="js/simplePaging.js"></script>
+<script>
+
+// 导航划过
+$(function(){
+    $(".div01 ul li").mouseenter(function(){
+        $(this).addClass("on");
+    });
+    $(".div01 ul li").mouseleave(function(){
+        $(this).removeClass("on");
+    })
+});
+
+//表格隔行变色
+$(function(){
+    var tDom=document.getElementsByClassName('t')[0];
+    var trDom=tDom.children[0].children[0].children;
+	getColor(trDom);
+	changeColor(trDom);
+});
+
+function getColor(trDom){	
+	for(var i=0;i<trDom.length;i++){
+		if(i%2==0){
+			trDom[i].style.backgroundColor="#f6f6f6";
+		}else{
+			trDom[i].style.backgroundColor="#fff";
+		}
+	}
+}
+
+function changeColor(trDom){
+	for(var i=1;i<trDom.length;i++){
+		if(trDom[i].style.backgroundColor=="rgb(255, 255, 255)"){
+			trDom[i].onmouseover=function(){		
+				this.style.backgroundColor="rgb(246, 246, 246)";
+			}
+			trDom[i].onmouseout=function(){		
+				this.style.backgroundColor="rgb(255, 255, 255)";
+			}
+		}
+	}
+}
+
+// 分页
+$(".simplePaging4").simplePaging({
+    allPage: 25,//总页数
+    showPage: 5,//显示页数
+    animateType: "jumpy",//过渡模式：动画“animation”、跳动“jumpy”、快速移动“fast”、正常速度移动“normal”、缓慢的速度移动“slow”、异常缓慢的速度移动“verySlow”
+    animationTime: 300,//animateType为animation时，动画过渡时间(ms)
+    callBack: function (num) {
+        $(".simplePaging4PageNum").text(num)
+    }
+});
+
+
+</script>
